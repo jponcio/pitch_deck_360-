@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
@@ -29,6 +30,9 @@ const MapDemo: React.FC = () => {
         <div>
            <h2 className="text-3xl font-bold text-gray-900">Mapa Territorial Avançado</h2>
            <p className="text-gray-500 mt-2">Visualização geo-eleitoral (Demo: Rio Grande do Sul)</p>
+           <p className="text-red-600 font-bold text-xs mt-1 uppercase tracking-tight">
+             * campo dedicado à equipe interna
+           </p>
         </div>
       </div>
 

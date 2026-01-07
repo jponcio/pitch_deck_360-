@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   Rocket, Flag, Users, Globe, Download, RefreshCcw, FileText, 
   DollarSign, TrendingUp, Calendar, Zap, Layers, Briefcase, PieChart as PieIcon,
-  CheckCircle2, Target
+  CheckCircle2, Target, Info
 } from 'lucide-react';
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine,
@@ -15,6 +16,7 @@ interface LevelInput {
   ticket: number;
   implantation: number;
   clients: number;
+  target: number;
 }
 
 const RoadmapCalculator: React.FC = () => {
@@ -25,13 +27,14 @@ const RoadmapCalculator: React.FC = () => {
   const [annualGoal] = useState(1000000);
 
   const [levels, setLevels] = useState<LevelInput[]>([
-    { id: 'ver', name: 'Vereador', ticket: 149, implantation: 0, clients: 120 },
-    { id: 'est', name: 'Dep. Estadual', ticket: 399, implantation: 500, clients: 30 },
-    { id: 'fed', name: 'Dep. Federal', ticket: 799, implantation: 1500, clients: 10 },
-    { id: 'pref', name: 'Prefeito', ticket: 1200, implantation: 3000, clients: 5 },
-    { id: 'sen', name: 'Senador', ticket: 2500, implantation: 5000, clients: 0 },
-    { id: 'gov', name: 'Governador', ticket: 5000, implantation: 15000, clients: 0 },
-    { id: 'vice', name: 'Vice-Governador', ticket: 2000, implantation: 5000, clients: 0 },
+    { id: 'ver', name: 'Vereador', ticket: 149, implantation: 0, clients: 120, target: 100 },
+    { id: 'est', name: 'Dep. Estadual', ticket: 399, implantation: 5000, clients: 5, target: 5 },
+    { id: 'fed', name: 'Dep. Federal', ticket: 799, implantation: 5000, clients: 5, target: 5 },
+    { id: 'pref', name: 'Prefeito', ticket: 1200, implantation: 3000, clients: 5, target: 5 },
+    { id: 'vpref', name: 'Vice-Prefeito', ticket: 800, implantation: 2000, clients: 0, target: 5 },
+    { id: 'sen', name: 'Senador', ticket: 2500, implantation: 5000, clients: 0, target: 1 },
+    { id: 'gov', name: 'Governador', ticket: 5000, implantation: 15000, clients: 0, target: 0 },
+    { id: 'vice', name: 'Vice-Governador', ticket: 2000, implantation: 5000, clients: 0, target: 0 },
   ]);
 
   // --- CALCULATIONS ---
@@ -200,13 +203,14 @@ const RoadmapCalculator: React.FC = () => {
 
   const resetCalculator = () => {
     setLevels([
-        { id: 'ver', name: 'Vereador', ticket: 149, implantation: 0, clients: 120 },
-        { id: 'est', name: 'Dep. Estadual', ticket: 399, implantation: 500, clients: 30 },
-        { id: 'fed', name: 'Dep. Federal', ticket: 799, implantation: 1500, clients: 10 },
-        { id: 'pref', name: 'Prefeito', ticket: 1200, implantation: 3000, clients: 5 },
-        { id: 'sen', name: 'Senador', ticket: 2500, implantation: 5000, clients: 0 },
-        { id: 'gov', name: 'Governador', ticket: 5000, implantation: 15000, clients: 0 },
-        { id: 'vice', name: 'Vice-Governador', ticket: 2000, implantation: 5000, clients: 0 },
+        { id: 'ver', name: 'Vereador', ticket: 149, implantation: 0, clients: 120, target: 100 },
+        { id: 'est', name: 'Dep. Estadual', ticket: 399, implantation: 5000, clients: 5, target: 5 },
+        { id: 'fed', name: 'Dep. Federal', ticket: 799, implantation: 5000, clients: 5, target: 5 },
+        { id: 'pref', name: 'Prefeito', ticket: 1200, implantation: 3000, clients: 5, target: 5 },
+        { id: 'vpref', name: 'Vice-Prefeito', ticket: 800, implantation: 2000, clients: 0, target: 5 },
+        { id: 'sen', name: 'Senador', ticket: 2500, implantation: 5000, clients: 0, target: 1 },
+        { id: 'gov', name: 'Governador', ticket: 5000, implantation: 15000, clients: 0, target: 0 },
+        { id: 'vice', name: 'Vice-Governador', ticket: 2000, implantation: 5000, clients: 0, target: 0 },
     ]);
     setStartMonth(0);
     setChurnRate(3);
@@ -318,14 +322,18 @@ const RoadmapCalculator: React.FC = () => {
             </div>
 
             {/* Matrix Inputs */}
-            <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col">
+                <div className="px-6 py-4 border-b border-gray-100 bg-blue-50/50 flex items-center gap-2">
+                  <Info size={16} className="text-blue-600" />
+                  <p className="text-sm font-medium text-blue-800">valores ainda em fase de validação, você pode alterar.</p>
+                </div>
                 <table className="w-full text-sm">
                     <thead className="bg-gray-100 text-gray-600 font-bold uppercase text-xs">
                         <tr>
-                            <th className="px-4 py-3 text-left">Nível</th>
-                            <th className="px-4 py-3 text-right">Ticket (Mensal)</th>
-                            <th className="px-4 py-3 text-right">Implantação</th>
-                            <th className="px-4 py-3 text-center">Clientes</th>
+                            <th className="px-4 py-3 text-left">NÍVEL</th>
+                            <th className="px-4 py-3 text-right">TICKET (MENSAL)</th>
+                            <th className="px-4 py-3 text-right">IMPLANTAÇÃO</th>
+                            <th className="px-4 py-3 text-center">CLIENTES</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
@@ -349,12 +357,17 @@ const RoadmapCalculator: React.FC = () => {
                                     />
                                 </td>
                                 <td className="px-4 py-3 text-center">
-                                    <input 
-                                        type="number" 
-                                        value={lvl.clients} 
-                                        onChange={(e) => handleLevelChange(lvl.id, 'clients', parseFloat(e.target.value))}
-                                        className="w-16 text-center border border-gray-300 rounded p-1 font-bold text-indigo-600 bg-white"
-                                    />
+                                    <div className="flex flex-col items-center">
+                                        <input 
+                                            type="number" 
+                                            value={lvl.clients} 
+                                            onChange={(e) => handleLevelChange(lvl.id, 'clients', parseFloat(e.target.value))}
+                                            className="w-16 text-center border border-gray-300 rounded p-1 font-bold text-indigo-600 bg-white"
+                                        />
+                                        <span className="text-[10px] text-gray-400 mt-1 uppercase font-bold tracking-tighter">
+                                            Meta 2026: {lvl.target}
+                                        </span>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
@@ -467,7 +480,7 @@ const RoadmapCalculator: React.FC = () => {
             <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
                <h4 className="text-xs font-bold text-gray-500 uppercase">Configuração de Implantação</h4>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 p-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 p-6">
                 {levels.map(lvl => (
                    <div key={lvl.id} className="bg-gray-50 p-3 rounded-lg border border-gray-100">
                       <p className="text-xs font-bold text-gray-700 mb-2 truncate" title={lvl.name}>{lvl.name}</p>
