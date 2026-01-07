@@ -1,8 +1,12 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
 import { MessageSquare, X, Send, Bot, Loader2 } from 'lucide-react';
 import { ChatMessage } from '../types';
 import { SYSTEM_INSTRUCTION } from '../constants';
+
+// Ajuste técnico para produção: suporta process.env (Node) e import.meta.env (Vite)
+const API_KEY = (import.meta as any).env?.VITE_API_KEY || process.env.API_KEY;
 
 interface ConsillIAProps {
   isOpen: boolean;
@@ -47,11 +51,11 @@ const ConsillIA: React.FC<ConsillIAProps> = ({ isOpen, setIsOpen }) => {
     setIsLoading(true);
 
     try {
-      if (!process.env.API_KEY) {
+      if (!API_KEY) {
         throw new Error("API Key not found");
       }
 
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: API_KEY });
       
       const chat = ai.chats.create({
         model: 'gemini-2.5-flash',
