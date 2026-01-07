@@ -1,0 +1,7 @@
+{
+  "name": "Pitch Deck - 360º",
+  "description": "Painel de Inteligência Estratégica para gestão política e parlamentar com IA integrada.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
