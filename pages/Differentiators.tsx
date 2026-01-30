@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
 const Differentiators: React.FC = () => {
   const diffs = [
-    { title: "Mapa Territorial Avançado", desc: "Não é apenas um mapa de calor. Cruzamos dados de no mínimo 3 eleições passadas ou conforme demanda com IDH e obras públicas." },
+    { title: "Mapa Territorial Avançado", desc: "Não é apenas um mapa de calor. Cruzamos dados de 3 eleições passadas com IDH e obras públicas." },
     { title: "Dashboard Eleitoral 360", desc: "Visão unificada de redes sociais, finanças de campanha e mobilização de rua." },
     { title: "IA Consill Integrada", desc: "Nosso maior trunfo. Uma IA treinada em regimentos internos e leis orgânicas que atua como consultor jurídico 24/7." },
-    { title: "Kanban de Entregas", desc: "Gestão visual de promessas de campanha, recursos destinados, parcerias, apoio, demandas e obras em andamento por bairro." },
+    { title: "Kanban de Entregas", desc: "Gestão visual de promessas de campanha e obras em andamento por bairro." },
     { title: "Projeção Eleitoral IA", desc: "Algoritmos que estimam o quociente eleitoral e meta de votos por zona." },
     { title: "Gestão de Articuladores", desc: "Controle hierárquico de lideranças de bairro e cabos eleitorais." },
     { title: "Integração Google Sheets", desc: "Edite na planilha, veja no painel. Sem fricção de importação complexa." },

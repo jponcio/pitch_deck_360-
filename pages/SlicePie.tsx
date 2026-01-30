@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Slice, Info, AlertTriangle, Plus, Trash2, Download, FileText, 
-  CheckCircle, Shield, Scale, HelpCircle, Lock
+  CheckCircle, Shield, Scale, HelpCircle, Lock, Edit2
 } from 'lucide-react';
 import { 
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
@@ -246,6 +246,12 @@ const SlicePie: React.FC = () => {
              </div>
           </div>
 
+          <div className="mb-[-12px]">
+            <span className="text-sm text-red-600 font-bold flex items-center gap-2 animate-pulse">
+              <Edit2 size={14} /> simulador, liberado para editar e visualizar
+            </span>
+          </div>
+
           {/* Contributors List */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
              <div className="bg-gray-100 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
@@ -379,7 +385,7 @@ const SlicePie: React.FC = () => {
                 </div>
              </div>
              <p className="mt-4 text-[10px] text-slate-500 italic">
-               *Aviso: esta ferramenta serve para simulação e organização interna. Não substitui avaliação jurídica. Recomenda-se formalizar todos os acordos com advogado especializado.
+               *Aviso: esta ferramenta serve para simulação e organization interna. Não substitui avaliação jurídica. Recomenda-se formalizar todos os acordos com advogado especializado.
              </p>
           </div>
 

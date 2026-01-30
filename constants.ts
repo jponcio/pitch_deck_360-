@@ -1,11 +1,12 @@
+
 import { FinancialYear, Competitor, CRMContact } from './types';
 
 export const INITIAL_FINANCIALS: FinancialYear[] = [
   { year: 2026, revenue: 1006200, costs: 336000, profit: 670200 },
-  { year: 2027, revenue: 1355000, costs: 546000, profit: 809000 },
-  { year: 2028, revenue: 2050000, costs: 950000, profit: 1100000 },
-  { year: 2029, revenue: 3200000, costs: 1300000, profit: 1900000 },
-  { year: 2030, revenue: 6500000, costs: 2300000, profit: 4200000 },
+  { year: 2027, revenue: 2800000, costs: 980000, profit: 1820000 },
+  { year: 2028, revenue: 6500000, costs: 2400000, profit: 4100000 },
+  { year: 2029, revenue: 12000000, costs: 4800000, profit: 7200000 },
+  { year: 2030, revenue: 18000000, costs: 6500000, profit: 11500000 },
 ];
 
 export const COMPETITORS: Competitor[] = [

@@ -42,7 +42,7 @@ const Pricing: React.FC = () => {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="text-center pb-5">
-        <p className="text-red-600 font-bold text-sm mb-2 animate-pulse">***valores em fase de validação</p>
+        <span className="text-[10px] text-red-600 font-bold uppercase tracking-wider mb-1 block">valores em fase de validaçāo</span>
         <h2 className="text-3xl font-bold text-gray-900">Planos e Investimento</h2>
         <p className="text-gray-500 mt-2">Modelos escaláveis para campanhas de todos os tamanhos.</p>
       </div>
@@ -98,10 +98,7 @@ const Pricing: React.FC = () => {
         ))}
       </div>
 
-      <div className="bg-gray-100 rounded-xl p-6 mt-8 relative border border-gray-200 shadow-sm">
-         <div className="absolute -top-3 left-6 bg-gray-100 px-2">
-            <p className="text-red-600 font-bold text-[10px] uppercase tracking-tight">valores em validação</p>
-         </div>
+      <div className="bg-gray-100 rounded-xl p-6 mt-8">
          <h4 className="font-bold text-gray-800 mb-4">Adicionais por Volume de Dados</h4>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div className="bg-white p-4 rounded-lg border border-gray-200">

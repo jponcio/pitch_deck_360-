@@ -16,7 +16,8 @@ import {
   Presentation,
   Calculator,
   Slice,
-  Bot
+  Bot,
+  BookOpen
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -26,12 +27,13 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage }) => {
   const menuItems: { id: PageId; label: string; icon: React.ReactNode }[] = [
+    { id: 'pitch_deck', label: 'Pitch Deck', icon: <Presentation size={20} /> },
     { id: 'home', label: 'Visão Geral', icon: <LayoutDashboard size={20} /> },
     { id: 'investors', label: 'Investidores', icon: <TrendingUp size={20} /> },
     { id: 'slice_pie', label: 'Slice Pie (Equity)', icon: <Slice size={20} /> },
-    { id: 'pitch_deck', label: 'Pitch Deck', icon: <Presentation size={20} /> },
     { id: 'roadmap_calculator', label: 'Simulador 2026', icon: <Calculator size={20} /> },
-    { id: 'consill_chat', label: 'Consill IA (Chat)', icon: <Bot size={20} /> }, // New Item
+    { id: 'consill_chat', label: 'Consill IA (Chat)', icon: <Bot size={20} /> },
+    { id: 'glossary', label: 'Glossário', icon: <BookOpen size={20} /> },
     { id: 'market', label: 'TAM / SAM / SOM', icon: <PieChart size={20} /> },
     { id: 'competitors', label: 'Concorrência', icon: <Users size={20} /> },
     { id: 'differentiators', label: 'Diferenciais', icon: <Lightbulb size={20} /> },

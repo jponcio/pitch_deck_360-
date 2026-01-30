@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   AlertTriangle, TrendingUp, CheckCircle, Shield, Users, 
@@ -137,8 +138,9 @@ const PitchDeck: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center h-full items-center">
           <div className="bg-gray-100 p-8 rounded-2xl border border-gray-200">
             <p className="text-sm font-bold text-gray-500 uppercase mb-3 tracking-widest">TAM</p>
-            <p className="text-4xl font-extrabold text-gray-900 mb-2">78.000</p>
-            <p className="text-base text-gray-600">Mandatos + 1.000 Partidos no Brasil</p>
+            <p className="text-4xl font-extrabold text-gray-900 mb-2">74.750</p>
+            <p className="text-base text-gray-600">Mandatos + 29 Partidos no Brasil</p>
+            <p className="text-[10px] text-gray-400 mt-2 font-bold uppercase">Fonte: TSE (Dados 2024)</p>
           </div>
           <div className="bg-gray-200 p-8 rounded-2xl border border-gray-300">
             <p className="text-sm font-bold text-gray-600 uppercase mb-3 tracking-widest">SAM</p>

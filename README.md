@@ -1,22 +1,20 @@
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-# Mandato 360° - Guia de Produção
+# Run and deploy your AI Studio app
 
-Aplicação de inteligência estratégica política pronta para deploy.
+This contains everything you need to run your app locally.
 
-### Instruções de Deploy (Vercel)
+View your app in AI Studio: https://ai.studio/apps/drive/1Tkhbv7-7D5YoK6FSaP2AeJEAGsAdieXT
 
-1. **Configuração de Build**:
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-   - Framework: `Vite`
+## Run Locally
 
-2. **Variáveis de Ambiente**:
-   - No painel da Vercel, adicione a chave `VITE_API_KEY` com sua chave do Google Gemini.
+**Prerequisites:**  Node.js
 
-3. **Checklist de Produção**:
-   - [x] Fallback de rotas configurado em `vercel.json`.
-   - [x] Bibliotecas de Mapas e BI otimizadas no bundle.
-   - [x] IA configurada para produção.
 
----
-*Este projeto mantém 100% da identidade visual e UX validada para investidores.*
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

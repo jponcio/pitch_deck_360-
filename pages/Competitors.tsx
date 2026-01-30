@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { 
-  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend,
+  // Alias Radar to RechartsRadar to avoid conflict with Lucide icon
+  Radar as RechartsRadar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend,
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip
 } from 'recharts';
-import { Shield, Zap, Target, Cpu, Map, Award, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Shield, Zap, Target, Cpu, Map, Award, CheckCircle2, AlertTriangle, Radar } from 'lucide-react';
 
 const Competitors: React.FC = () => {
   // 1. DADOS REAIS DO MERCADO
@@ -131,6 +133,7 @@ const Competitors: React.FC = () => {
         {/* CHART */}
         <div className="lg:col-span-3 bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center">
            <h3 className="text-lg font-bold text-gray-800 mb-6 w-full text-left flex items-center gap-2">
+             {/* Use Radar icon from lucide-react */}
              <Radar size={20} className="text-indigo-600" /> Radar de Valor: Mandato 360° vs Mercado
            </h3>
            <div className="h-[400px] w-full">
@@ -140,8 +143,8 @@ const Competitors: React.FC = () => {
                 <PolarAngleAxis dataKey="subject" tick={{ fill: '#64748b', fontSize: 12, fontWeight: 'bold' }} />
                 <PolarRadiusAxis angle={30} domain={[0, 10]} tick={false} axisLine={false} />
                 
-                {/* Mandato 360 */}
-                <Radar
+                {/* Mandato 360 - Using RechartsRadar alias */}
+                <RechartsRadar
                   name="Mandato 360°"
                   dataKey="A"
                   stroke="#4f46e5"
@@ -150,8 +153,8 @@ const Competitors: React.FC = () => {
                   fillOpacity={0.4}
                 />
                 
-                {/* Average Market */}
-                <Radar
+                {/* Average Market - Using RechartsRadar alias */}
+                <RechartsRadar
                   name="Média do Mercado"
                   dataKey="B"
                   stroke="#94a3b8"

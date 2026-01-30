@@ -28,11 +28,9 @@ const MapDemo: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500 h-[calc(100vh-140px)] flex flex-col">
        <div className="flex justify-between items-center border-b border-gray-200 pb-5 flex-shrink-0">
         <div>
+           <span className="text-[10px] text-red-600 font-bold uppercase tracking-wider mb-1 block">* destinado equipe interna</span>
            <h2 className="text-3xl font-bold text-gray-900">Mapa Territorial Avançado</h2>
            <p className="text-gray-500 mt-2">Visualização geo-eleitoral (Demo: Rio Grande do Sul)</p>
-           <p className="text-red-600 font-bold text-xs mt-1 uppercase tracking-tight">
-             * campo dedicado à equipe interna
-           </p>
         </div>
       </div>
 

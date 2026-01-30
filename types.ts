@@ -44,7 +44,8 @@ export type PageId =
   | 'roadmap' 
   | 'financials' 
   | 'map' 
-  | 'crm';
+  | 'crm'
+  | 'glossary';
 
 export interface ChatMessage {
   id: string;

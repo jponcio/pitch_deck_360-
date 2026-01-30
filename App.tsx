@@ -17,6 +17,7 @@ import PitchDeck from './pages/PitchDeck';
 import RoadmapCalculator from './pages/RoadmapCalculator';
 import SlicePie from './pages/SlicePie';
 import ConsillChat from './pages/ConsillChat';
+import Glossary from './pages/Glossary';
 import { PageId } from './types';
 import { INITIAL_FINANCIALS } from './constants';
 
@@ -48,6 +49,7 @@ const App: React.FC = () => {
       case 'financials': return <Financials data={financialData} setData={setFinancialData} />;
       case 'map': return <MapDemo />;
       case 'crm': return <CRM />;
+      case 'glossary': return <Glossary />;
       default: return (
         <Overview 
           financials={financialData} 

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Search, Plus, Phone, Calendar, MoreHorizontal, Filter, Info } from 'lucide-react';
+import { Search, Plus, Phone, Calendar, MoreHorizontal, Filter } from 'lucide-react';
 import { CRMContact } from '../types';
 import { INITIAL_CRM_DATA } from '../constants';
 
@@ -27,11 +27,9 @@ const CRM: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500 h-full flex flex-col">
        <div className="flex justify-between items-center border-b border-gray-200 pb-5 flex-shrink-0">
         <div>
+           <span className="text-[10px] text-red-600 font-bold uppercase tracking-wider mb-1 block">* destinado equipe interna</span>
            <h2 className="text-3xl font-bold text-gray-900">CRM Político</h2>
            <p className="text-gray-500 mt-2">Gestão de relacionamento com mandatários e partidos.</p>
-           <p className="text-[11px] text-blue-600 mt-2 font-medium flex items-center gap-1 italic">
-             <Info size={12} /> * incluir no projeto um CRM interno para equipe da startup
-           </p>
         </div>
         <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
           <Plus size={18} /> Novo Lead
