@@ -160,7 +160,7 @@ const RoadmapCalculator: React.FC = () => {
           <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
               <p className="text-gray-400 text-xs font-bold uppercase mb-1">Unit Economics</p>
               <p className="text-3xl font-bold text-blue-600">{(kpis.ltv / kpis.cac).toFixed(1)}x</p>
-              <p className="text-[10px] text-gray-500 mt-2">LTV/CAC (Alvo > 3x)</p>
+              <p className="text-[10px] text-gray-500 mt-2">LTV/CAC (Alvo &gt; 3x)</p>
           </div>
       </div>
 
