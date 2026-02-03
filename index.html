@@ -37,26 +37,26 @@
       }
     </style>
     <script>
-      // Polyfill para process.env em ambiente de produção (Vercel)
+      // Polyfill para process.env em ambiente de produção
       window.process = {
         env: {
-          API_KEY: "" // O Vite injetará isso se configurado, ou o código usará o fallback
+          API_KEY: ""
         }
       };
     </script>
 <script type="importmap">
 {
   "imports": {
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.3",
     "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
     "recharts": "https://esm.sh/recharts@^3.7.0",
-    "react-leaflet": "https://esm.sh/react-leaflet@^5.0.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "leaflet": "https://esm.sh/leaflet@^1.9.4"
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "leaflet": "https://esm.sh/leaflet@^1.9.4",
+    "react-leaflet": "https://esm.sh/react-leaflet@^5.0.0"
   }
 }
 </script>
