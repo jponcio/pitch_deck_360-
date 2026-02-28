@@ -72,15 +72,45 @@ const Competitors: React.FC = () => {
     { subject: 'Suporte', A: 8, B: 5, fullMark: 10 },
   ];
 
+  const exportCSV = () => {
+    const headers = ['Nome', 'Foco', 'Pontos Fracos', 'Pontos Fortes', 'Observacao'];
+    const csvContent = [
+      headers.join(','),
+      ...competitorsList.map(c => `"${c.name}","${c.focus}","${c.weakness}","${c.strength}","${c.obs}"`)
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'competidores_mandato360.csv';
+    link.click();
+  };
+
   return (
     <div className="space-y-10 animate-in fade-in duration-500 pb-10">
       
       {/* HEADER */}
-      <div className="border-b border-gray-200 pb-5">
-        <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-          <Target className="text-indigo-600" /> Análise de Concorrência
-        </h2>
-        <p className="text-gray-500 mt-2">Comparativo com players reais do mercado brasileiro.</p>
+      <div className="flex justify-between items-center border-b border-gray-200 pb-5">
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+            <Target className="text-indigo-600" /> Análise de Concorrência
+          </h2>
+          <p className="text-gray-500 mt-2">Comparativo com players reais do mercado brasileiro.</p>
+        </div>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => window.print()}
+            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+          >
+            <Shield size={16} /> PDF
+          </button>
+          <button 
+            onClick={exportCSV}
+            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+          >
+            <Zap size={16} /> XLS/CSV
+          </button>
+        </div>
       </div>
 
       {/* 1. TABELA DE CONCORRENTES */}

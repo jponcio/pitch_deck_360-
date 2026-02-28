@@ -23,6 +23,20 @@ const CRM: React.FC = () => {
     }
   };
 
+  const exportCSV = () => {
+    const headers = ['Nome', 'Cargo', 'Cidade', 'Status', 'Ultimo Contato'];
+    const csvContent = [
+      headers.join(','),
+      ...filtered.map(c => `${c.name},${c.role},${c.city},${c.status},${c.lastContact}`)
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'crm_mandato360.csv';
+    link.click();
+  };
+
   return (
     <div className="space-y-6 animate-in fade-in duration-500 h-full flex flex-col">
        <div className="flex justify-between items-center border-b border-gray-200 pb-5 flex-shrink-0">
@@ -31,9 +45,23 @@ const CRM: React.FC = () => {
            <h2 className="text-3xl font-bold text-gray-900">CRM Político</h2>
            <p className="text-gray-500 mt-2">Gestão de relacionamento com mandatários e partidos.</p>
         </div>
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-          <Plus size={18} /> Novo Lead
-        </button>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => window.print()}
+            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+          >
+            <Calendar size={18} /> PDF
+          </button>
+          <button 
+            onClick={exportCSV}
+            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+          >
+            <MoreHorizontal size={18} /> XLS/CSV
+          </button>
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors text-sm font-medium">
+            <Plus size={18} /> Novo Lead
+          </button>
+        </div>
       </div>
 
       <div className="flex gap-4 mb-4 flex-shrink-0">

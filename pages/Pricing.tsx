@@ -39,12 +39,42 @@ const Pricing: React.FC = () => {
     }
   ];
 
+  const exportCSV = () => {
+    const headers = ['Plano', 'Preco', 'Usuarios', 'Recursos'];
+    const csvContent = [
+      headers.join(','),
+      ...plans.map(p => `"${p.name}","${p.price}","${p.users}","${p.features.join(' | ')}"`)
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'planos_mandato360.csv';
+    link.click();
+  };
+
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="text-center pb-5">
-        <span className="text-[10px] text-red-600 font-bold uppercase tracking-wider mb-1 block">valores em fase de validaçāo</span>
-        <h2 className="text-3xl font-bold text-gray-900">Planos e Investimento</h2>
-        <p className="text-gray-500 mt-2">Modelos escaláveis para campanhas de todos os tamanhos.</p>
+      <div className="flex justify-between items-start border-b border-gray-100 pb-5">
+        <div className="text-left">
+          <span className="text-[10px] text-red-600 font-bold uppercase tracking-wider mb-1 block">valores em fase de validaçāo</span>
+          <h2 className="text-3xl font-bold text-gray-900">Planos e Investimento</h2>
+          <p className="text-gray-500 mt-2">Modelos escaláveis para campanhas de todos os tamanhos.</p>
+        </div>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => window.print()}
+            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+          >
+            <Check size={16} /> PDF
+          </button>
+          <button 
+            onClick={exportCSV}
+            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+          >
+            <Star size={16} /> XLS/CSV
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">

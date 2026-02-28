@@ -57,6 +57,27 @@ const MarketAnalysis: React.FC = () => {
 
   const formatNumber = (num: number) => new Intl.NumberFormat('pt-BR').format(num);
 
+  const exportCSV = () => {
+    const headers = ['Categoria', 'Valor', 'Descricao'];
+    const data = [
+      ['TAM - Mercado Total', '65000', 'Mandatos Ativos'],
+      ['SAM - Mercado Alcancavel', '13500', 'Perfil Tech'],
+      ['SOM - Meta 2026', '1800', 'Cenario Realista'],
+      ...mandatesByLevel.map(m => [m.name, m.value, 'TAM Detail'])
+    ];
+    
+    const csvContent = [
+      headers.join(','),
+      ...data.map(row => row.join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'mercado_mandato360.csv';
+    link.click();
+  };
+
   return (
     <div className="space-y-10 animate-in fade-in duration-700 pb-20">
       
@@ -65,13 +86,29 @@ const MarketAnalysis: React.FC = () => {
         <div className="absolute top-0 right-0 p-8 opacity-5">
             <Landmark size={120} />
         </div>
-        <div className="relative z-10 max-w-4xl">
-          <h2 className="text-3xl font-black text-gray-900 mb-4">Análise de Mercado (TAM / SAM / SOM)</h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
+        <div className="relative z-10">
+          <div className="flex justify-between items-start mb-4">
+            <h2 className="text-3xl font-black text-gray-900">Análise de Mercado (TAM / SAM / SOM)</h2>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => window.print()}
+                className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+              >
+                <InfoIcon size={16} /> PDF
+              </button>
+              <button 
+                onClick={exportCSV}
+                className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 flex items-center gap-2 text-sm font-medium"
+              >
+                <TrendingUp size={16} /> XLS/CSV
+              </button>
+            </div>
+          </div>
+          <p className="text-gray-600 leading-relaxed mb-6 max-w-4xl">
             O Brasil possui um dos maiores sistemas democráticos do mundo. Cada mandato funciona como uma 
             <strong> unidade de gestão autônoma</strong>, com equipe, orçamento e necessidade constante de organização territorial.
           </p>
-          <div className="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded-r-xl">
+          <div className="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded-r-xl max-w-4xl">
              <p className="text-indigo-900 text-sm italic">
                "O Meu Mandato 360º profissionaliza essa gestão, trazendo dados, território e IA para o centro da tomada de decisão política, 
                substituindo planilhas analógicas e intuição por inteligência eleitoral."

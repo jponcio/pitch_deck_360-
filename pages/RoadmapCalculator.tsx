@@ -111,6 +111,40 @@ const RoadmapCalculator: React.FC = () => {
     setLevels(prev => prev.map(lvl => lvl.id === id ? { ...lvl, [field]: value } : lvl));
   };
 
+  const exportCSV = () => {
+    const headers = ['Cargo', 'Mensalidade', 'Setup', 'Clientes', 'MRR Total', 'Setup Total'];
+    const rows = levels.map(lvl => [
+      lvl.name,
+      lvl.ticket,
+      lvl.implantation,
+      lvl.clients,
+      lvl.ticket * lvl.clients,
+      lvl.implantation * lvl.clients
+    ].join(','));
+    
+    const kpiHeaders = ['', '', '', '', '', ''];
+    const kpiRows = [
+      ['KPIs Gerais', '', '', '', '', ''],
+      ['Valuation', kpis.currentValuation, '', '', '', ''],
+      ['Receita Projetada 2026', kpis.annualRevenue, '', '', '', ''],
+      ['ARR', kpis.arr, '', '', '', ''],
+      ['LTV/CAC', (kpis.ltv / kpis.cac).toFixed(2), '', '', '', '']
+    ].map(r => r.join(','));
+
+    const csvContent = [
+      headers.join(','),
+      ...rows,
+      '',
+      ...kpiRows
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'simulador_mandato360.csv';
+    link.click();
+  };
+
   const formatMoney = (val: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(val);
 
   return (
@@ -127,7 +161,10 @@ const RoadmapCalculator: React.FC = () => {
         </div>
         <div className="flex gap-2">
            <button onClick={() => window.print()} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
-             <Download size={16} /> Exportar
+             <FileText size={16} /> PDF
+           </button>
+           <button onClick={exportCSV} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+             <Download size={16} /> XLS/CSV
            </button>
         </div>
       </div>
